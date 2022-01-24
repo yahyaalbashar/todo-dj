@@ -1,0 +1,16 @@
+<h1>List View</h1>
+
+<table>
+    <tr>
+        <th>Item</th>
+    </tr>
+    {% for task in tasks %}
+    <tr>
+        <td>{{ task.title }}</td>
+    </tr>
+    {% empty %}
+    <tr>
+        <td>No items</td>
+    </tr>
+    {% endfor %}
+</table>
