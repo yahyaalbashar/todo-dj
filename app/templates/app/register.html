@@ -1,13 +1,35 @@
-<h1>Register</h1>
+{% extends 'app/main.html' %} {% block content %}
 
-<form method="POST">
+<div class="header-bar">
+  <h1>Register</h1>
+</div>
 
+<div class="card-body">
+  <form method="POST">
     {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" name="submit-btn" value="Register">
 
-</form>
+    <label> {{ form.username.label }} <span style="color: red">*</span> </label>
+    {{ form.username }}
+    <ul>
+      <li>150 characters or fewer.</li>
+      <li>Letters, digits and @ - + _ . only.</li>
+    </ul>
 
-<p>
-    Already have an account? <a href="{% url 'login' %}">Login</a>
-</p>
+    <label> {{ form.password1.label }} </label>
+    {{ form.password1 }} {{ form.password1.help_text }}
+
+    <label> Confirm Password </label>
+    {{ form.password2 }} <br />
+    {{ form.password2.help_text }}
+
+    <input
+      style="margin-top: 10px"
+      class="button"
+      type="submit"
+      value="Register"
+    />
+  </form>
+
+  <p>Already have an account? <a href="{% url 'login' %}">Login</a></p>
+</div>
+{% endblock content %}
