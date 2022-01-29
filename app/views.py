@@ -23,8 +23,8 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView, FormVi
 
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.forms import UserCreationForm
-from django.contrib.auth import login
+from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
+from django.contrib.auth import login, update_session_auth_hash
 
 from app.models import Task
 
@@ -53,6 +53,24 @@ class RegisterView(FormView):
         if self.request.user.is_authenticated:
             return redirect('tasks')
         return super(RegisterView, self).get(*args, **kwargs)
+
+
+class PasswordChangeView(LoginRequiredMixin, FormView):
+    template_name = 'app/password_change.html'
+    form_class = PasswordChangeForm
+    success_url = reverse_lazy('tasks')
+
+    def form_valid(self, form):
+        user = form.save()
+        if user is not None:
+            login(self.request, user)
+            update_session_auth_hash(self.request, user)
+        return super(PasswordChangeView, self).form_valid(form)
+
+    def get_form_kwargs(self):
+        kwargs = super(PasswordChangeView, self).get_form_kwargs()
+        kwargs['user'] = self.request.user
+        return kwargs
 
 
 class TaskList(LoginRequiredMixin, ListView):
