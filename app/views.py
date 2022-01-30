@@ -58,7 +58,7 @@ class RegisterView(FormView):
 class PasswordChangeView(LoginRequiredMixin, FormView):
     template_name = 'app/password_change.html'
     form_class = PasswordChangeForm
-    success_url = reverse_lazy('tasks')
+    success_url = reverse_lazy('password_change_success')
 
     def form_valid(self, form):
         user = form.save()
@@ -69,6 +69,17 @@ class PasswordChangeView(LoginRequiredMixin, FormView):
 
     def get_form_kwargs(self):
         kwargs = super(PasswordChangeView, self).get_form_kwargs()
+        kwargs['user'] = self.request.user
+        return kwargs
+
+
+class PasswordChangeSuccessView(LoginRequiredMixin, FormView):
+    template_name = 'app/password_change_success.html'
+    form_class = PasswordChangeForm
+    success_url = reverse_lazy('tasks')
+
+    def get_form_kwargs(self):
+        kwargs = super(PasswordChangeSuccessView, self).get_form_kwargs()
         kwargs['user'] = self.request.user
         return kwargs
 
