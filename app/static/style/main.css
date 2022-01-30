@@ -42,6 +42,11 @@ label {
   text-decoration: none;
 }
 
+.button:hover {
+  background-color: #302b63;
+  color: #fafafa;
+}
+
 .card-body {
   padding: 20px;
 }
