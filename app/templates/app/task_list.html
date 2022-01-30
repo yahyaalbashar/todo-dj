@@ -35,7 +35,7 @@
     <input class="button" type="submit" value="Search" />
   </form>
 
-  <a id="add-link" href="{% url 'task_new' %}">&#x2b;</a>
+  <a title="Add new task" id="add-link" href="{% url 'task_new' %}">&#x2b;</a>
 </div>
 
 <div class="task-items-wrapper">
@@ -52,10 +52,10 @@
     </div>
     <p>
       <a href="{% url 'task_edit' task.id %}"
-        ><i class="fa fa-edit" style="margin-right: 10px"></i
+        ><i class="fa fa-edit" title="Edit task" style="margin-right: 10px"></i
       ></a>
 
-      <a class="delete-link" href="{% url 'task_delete' task.id %}">&#215;</a>
+      <a class="delete-link" title="Delete task" href="{% url 'task_delete' task.id %}">&#215;</a>
     </p>
 
     {% else %}
@@ -66,10 +66,10 @@
     </div>
     <p>
       <a href="{% url 'task_edit' task.id %}"
-        ><i class="fa fa-edit" style="margin-right: 10px"></i
+        ><i class="fa fa-edit" title="Edit task" style="margin-right: 10px"></i
       ></a>
 
-      <a class="delete-link" href="{% url 'task_delete' task.id %}">&#215;</a>
+      <a class="delete-link" title="Delete task" href="{% url 'task_delete' task.id %}">&#215;</a>
     </p>
 
     {% endif %}
