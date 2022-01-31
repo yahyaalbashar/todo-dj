@@ -31,6 +31,15 @@ label {
   display: block;
 }
 
+.alert-message {
+  margin-top: 10px;
+  color: #fafafa;
+  background-color: #f44336;
+  padding: 4px;
+  margin-bottom: 2px;
+  border-radius: 5px;
+}
+
 .button {
   border: 1px solid #302b63;
   background-color: #fafafa;
@@ -57,6 +66,20 @@ label {
   background-color: #fff;
   -webkit-box-shadow: 2px 2px 13px -4px rgba(0 0, 0, 0.21);
   box-shadow: 2px 2px 13px -4px rgba(0 0, 0, 0.21);
+}
+
+.closebutton {
+  margin-left: 15px;
+  color: #fafafa;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebutton:hover {
+  color: #302b63;
 }
 
 .delete-link {
