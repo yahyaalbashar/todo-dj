@@ -16,14 +16,15 @@
  """
 
 from django.urls import path
-from app.views import CustomLoginView, RegisterView, PasswordChangeView, PasswordChangeSuccessView, TaskList, TaskDetail, TaskCreate, TaskUpdate, TaskDelete
+from app.views import CustomLoginView, PasswordChangeSuccessView, TaskList, TaskDetail, TaskCreate, TaskUpdate, TaskDelete
+from app.forms import RegisterForm, PasswordChangeForm
 
 from django.contrib.auth.views import LogoutView
 
 urlpatterns = [
     path('login/', CustomLoginView.as_view(), name='login'),
-    path('register/', RegisterView.as_view(), name='register'),
-    path('password_change/', PasswordChangeView.as_view(), name='password_change'),
+    path('register/', RegisterForm.as_view(), name='register'),
+    path('password_change/', PasswordChangeForm.as_view(), name='password_change'),
     path('password_change/done/', PasswordChangeSuccessView.as_view(), name='password_change_success'),
     path('logout/', LogoutView.as_view(next_page='login'), name='logout'),
     path('', TaskList.as_view(), name='tasks'),

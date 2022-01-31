@@ -15,7 +15,6 @@
  along with this program.  If not, see <https://www.gnu.org/licenses/>.
  """
 
-from django.shortcuts import redirect
 from django.urls import reverse_lazy
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
@@ -23,8 +22,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView, FormVi
 
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.contrib.auth.forms import UserCreationForm, PasswordChangeForm
-from django.contrib.auth import login, update_session_auth_hash
+from django.contrib.auth.forms import PasswordChangeForm
 
 from app.models import Task
 
@@ -36,41 +34,6 @@ class CustomLoginView(LoginView):
 
     def get_success_url(self):
         return reverse_lazy('tasks')
-
-
-class RegisterView(FormView):
-    template_name = 'app/register.html'
-    form_class = UserCreationForm
-    success_url = reverse_lazy('login')
-
-    def form_valid(self, form):
-        user = form.save()
-        if user is not None:
-            login(self.request, user)
-        return super(RegisterView, self).form_valid(form)
-
-    def get(self, *args, **kwargs):
-        if self.request.user.is_authenticated:
-            return redirect('tasks')
-        return super(RegisterView, self).get(*args, **kwargs)
-
-
-class PasswordChangeView(LoginRequiredMixin, FormView):
-    template_name = 'app/password_change.html'
-    form_class = PasswordChangeForm
-    success_url = reverse_lazy('password_change_success')
-
-    def form_valid(self, form):
-        user = form.save()
-        if user is not None:
-            login(self.request, user)
-            update_session_auth_hash(self.request, user)
-        return super(PasswordChangeView, self).form_valid(form)
-
-    def get_form_kwargs(self):
-        kwargs = super(PasswordChangeView, self).get_form_kwargs()
-        kwargs['user'] = self.request.user
-        return kwargs
 
 
 class PasswordChangeSuccessView(LoginRequiredMixin, FormView):
