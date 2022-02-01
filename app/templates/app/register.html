@@ -37,7 +37,10 @@
 
     <label> Confirm Password </label>
     {{ form.password2 }} <br />
-    {{ form.password2.help_text }} {% if form.errors %}
+    <ul>
+      <li>{{ form.password2.help_text }}</li>
+    </ul>
+    {% if form.errors %}
     <div class="alert-message">
       <span
         class="closebutton"
@@ -52,7 +55,6 @@
     {% endif %}
 
     <input
-      style="margin-top: 10px"
       class="button"
       type="submit"
       value="Register"
