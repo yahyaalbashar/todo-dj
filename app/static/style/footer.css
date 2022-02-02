@@ -1,7 +1,8 @@
 .footer-basic {
+  font-family: "Nunito", sans-serif;
   padding: 40px 0;
-  background-color: #ffffff;
-  color: #4b4c4d;
+  background-color: #fafafa;
+  color: #4b5156;
 }
 
 .footer-basic ul {
@@ -27,12 +28,12 @@
   opacity: 1;
 }
 
-.footer-basic .social {
+.footer-basic .contact {
   text-align: center;
   padding-bottom: 25px;
 }
 
-.footer-basic .social > a {
+.footer-basic .contact > a {
   font-size: 24px;
   width: 40px;
   height: 40px;
@@ -40,21 +41,23 @@
   display: inline-block;
   text-align: center;
   border-radius: 50%;
-  border: 1px solid #ccc;
+  border: 1px solid #302b63;
   margin: 0 8px;
   color: inherit;
   opacity: 0.75;
 }
 
-.footer-basic .social > a:hover {
+.footer-basic .contact > a:hover {
   opacity: 0.9;
+  background-color: #302b63;
+  color: #fafafa;
 }
 
 .footer-basic .copyright {
   margin-top: 15px;
   text-align: center;
   font-size: 13px;
-  color: #aaa;
+  color: #f44336;
   margin-bottom: 0;
 }
 
