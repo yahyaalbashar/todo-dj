@@ -29,7 +29,7 @@
 ### Deployment on localhost
 
 - With `existing PostgreSQL database`
-  (follow [this](https://www.postgresql.org/docs/current/tutorial-install.html) to for setting up a local PostgreSQL database)
+  (follow [this](https://www.postgresql.org/docs/current/tutorial-install.html) for setting up a local PostgreSQL database)
 
 1. Clone the repository
 
