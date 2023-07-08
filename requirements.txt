@@ -3,3 +3,5 @@ waitress==2.1.2
 whitenoise==5.3.0
 psycopg2==2.9.3
 python-dotenv==0.19.2
+# @Aquilla77220011
+# +14176145045
